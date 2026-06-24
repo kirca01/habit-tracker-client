@@ -61,6 +61,15 @@ export default function DashboardPage() {
       console.error('Error deleting habit');
     }
   };
+  
+  const handleEdit = async (id: number, name: string, description: string, color: string) => {
+    try {
+      await api.put(`/habits/${id}`, { name, description, color });
+      fetchHabits();
+    } catch {
+      console.error('Error editing habit');
+    }
+  };
 
   const completedToday = habits.filter(h =>
     h.entries.some(e => e.date === new Date().toISOString().split('T')[0])
@@ -120,6 +129,7 @@ export default function DashboardPage() {
                 onCheckIn={handleCheckIn}
                 onUndoCheckIn={handleUndoCheckIn}
                 onDelete={handleDelete}
+                onEdit={handleEdit}
               />
             ))}
           </div>
