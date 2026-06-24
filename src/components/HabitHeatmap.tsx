@@ -28,7 +28,7 @@ export default function HabitHeatmap({ entries }: Props) {
 
     return (
     <div className="mt-3">
-        <p className="text-gray-500 text-xs mb-2">Posljednjih 6 mjeseci</p>
+        <p className="text-gray-500 text-xs mb-2">Last 6 months</p>
         <div className="flex gap-1">
             {chunks.map((week, wi) => (
             <div key={wi} className="flex flex-col gap-1">

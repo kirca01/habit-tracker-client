@@ -20,7 +20,7 @@ export default function LoginPage() {
       login(res.data.token);
       navigate('/');
     } catch {
-      setError('Pogrešan email ili lozinka.');
+      setError('Invalid email or password.');
     } finally {
       setLoading(false);
     }
@@ -29,8 +29,8 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
       <div className="bg-gray-900 rounded-2xl p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold text-white mb-2">Dobrodošao nazad</h1>
-        <p className="text-gray-400 mb-6">Prijavi se na svoj nalog</p>
+        <h1 className="text-2xl font-bold text-white mb-2">Welcome back</h1>
+        <p className="text-gray-400 mb-6">Sign in to your account</p>
 
         {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
 
@@ -46,7 +46,7 @@ export default function LoginPage() {
             />
           </div>
           <div>
-            <label className="text-gray-300 text-sm mb-1 block">Lozinka</label>
+            <label className="text-gray-300 text-sm mb-1 block">Password</label>
             <input
               type="password"
               value={password}
@@ -60,14 +60,14 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
           >
-            {loading ? 'Prijava...' : 'Prijavi se'}
+            {loading ? 'Logging...' : 'Log in'}
           </button>
         </div>
 
         <p className="text-gray-400 text-sm mt-6 text-center">
-          Nemaš nalog?{' '}
+          Don't have an account?{' '}
           <Link to="/register" className="text-indigo-400 hover:underline">
-            Registruj se
+            Register
           </Link>
         </p>
       </div>

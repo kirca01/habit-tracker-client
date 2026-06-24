@@ -51,7 +51,7 @@ export default function HabitCard({ habit, onCheckIn, onUndoCheckIn, onDelete }:
       <div className="flex items-center gap-2">
         <span className="text-2xl">🔥</span>
         <span className="text-white font-bold text-xl">{streak}</span>
-        <span className="text-gray-400 text-sm">dan streak</span>
+        <span className="text-gray-400 text-sm">day streak</span>
       </div>
 
       <HabitHeatmap entries={habit.entries} />
@@ -64,7 +64,7 @@ export default function HabitCard({ habit, onCheckIn, onUndoCheckIn, onDelete }:
             : 'bg-gray-800 hover:bg-indigo-600 text-gray-300 hover:text-white'
         }`}
       >
-        {isCompletedToday ? '✓ Završeno danas' : 'Označi kao završeno'}
+        {isCompletedToday ? '✓ Done today' : 'Mark as done'}
       </button>
     </div>
   );

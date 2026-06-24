@@ -21,33 +21,33 @@ export default function AddHabitModal({ onAdd, onClose }: Props) {
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
       <div className="bg-gray-900 rounded-2xl p-6 w-full max-w-md">
-        <h2 className="text-white text-xl font-bold mb-4">Nova navika</h2>
+        <h2 className="text-white text-xl font-bold mb-4">New Habit</h2>
 
         <div className="space-y-4">
           <div>
-            <label className="text-gray-300 text-sm mb-1 block">Naziv *</label>
+            <label className="text-gray-300 text-sm mb-1 block">Name *</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="npr. Vježbanje"
+              placeholder="e.g. Exercise"
             />
           </div>
 
           <div>
-            <label className="text-gray-300 text-sm mb-1 block">Opis (opciono)</label>
+            <label className="text-gray-300 text-sm mb-1 block">Description (optional)</label>
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="npr. 30 minuta cardio"
+              placeholder="e.g. 30 min cardio"
             />
           </div>
 
           <div>
-            <label className="text-gray-300 text-sm mb-1 block">Boja</label>
+            <label className="text-gray-300 text-sm mb-1 block">Color</label>
             <div className="flex gap-2">
               {COLORS.map(c => (
                 <button
@@ -66,13 +66,13 @@ export default function AddHabitModal({ onAdd, onClose }: Props) {
             onClick={onClose}
             className="flex-1 py-2 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 transition"
           >
-            Odustani
+            Cancel
           </button>
           <button
             onClick={handleSubmit}
             className="flex-1 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
           >
-            Dodaj
+            Add
           </button>
         </div>
       </div>
