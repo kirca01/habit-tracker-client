@@ -38,4 +38,4 @@ App will be available at `http://localhost:5173`
 
 ## Screenshots
 
-> Dashboard with habit cards, streak counter, and heatmap visualization.
+![Dashboard](screenshot.png)
