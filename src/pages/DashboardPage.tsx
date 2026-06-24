@@ -4,8 +4,10 @@ import api from '../api/axios';
 import type { Habit } from '../types';
 import HabitCard from '../components/HabitCard';
 import AddHabitModal from '../components/AddHabitModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function DashboardPage() {
+  const navigate = useNavigate();
   const { logout } = useAuth();
   const [habits, setHabits] = useState<Habit[]>([]);
   const [showModal, setShowModal] = useState(false);
@@ -92,6 +94,12 @@ export default function DashboardPage() {
               className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl font-semibold transition"
             >
               + Add
+            </button>
+            <button
+              onClick={() => navigate('/stats')}
+              className="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-xl transition"
+            >
+              Stats
             </button>
             <button
               onClick={logout}

@@ -8,7 +8,7 @@ interface Props {
   onCheckIn: (id: number) => void;
   onUndoCheckIn: (id: number) => void;
   onDelete: (id: number) => void;
-  onEdit: (id: number, name: string, description: string, color: string) => void;
+  onEdit: (id: number, name: string, description: string, color: string, weeklyGoal: number) => void;
 }
 
 export default function HabitCard({ habit, onCheckIn, onUndoCheckIn, onDelete, onEdit }: Props) {
@@ -33,7 +33,7 @@ export default function HabitCard({ habit, onCheckIn, onUndoCheckIn, onDelete, o
 
   const getWeeklyProgress = () => {
     const now = new Date();
-    const dayOfWeek = (now.getDay() + 6) % 7; // Monday = 0
+    const dayOfWeek = (now.getDay() + 6) % 7;
     const monday = new Date(now);
     monday.setDate(now.getDate() - dayOfWeek);
 
