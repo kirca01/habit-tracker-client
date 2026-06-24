@@ -31,6 +31,24 @@ export default function HabitCard({ habit, onCheckIn, onUndoCheckIn, onDelete, o
     return streak;
   };
 
+  const getWeeklyProgress = () => {
+    const now = new Date();
+    const dayOfWeek = (now.getDay() + 6) % 7; // Monday = 0
+    const monday = new Date(now);
+    monday.setDate(now.getDate() - dayOfWeek);
+
+    let count = 0;
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(monday);
+      d.setDate(monday.getDate() + i);
+      const dateStr = d.toISOString().split('T')[0];
+      if (habit.entries.some(e => e.date === dateStr)) count++;
+    }
+    return count;
+  };
+
+  const weeklyDone = getWeeklyProgress();
+
   const streak = getStreak();
 
   return (
@@ -65,6 +83,12 @@ export default function HabitCard({ habit, onCheckIn, onUndoCheckIn, onDelete, o
           <span className="text-2xl">🔥</span>
           <span className="text-white font-bold text-xl">{streak}</span>
           <span className="text-gray-400 text-sm">day streak</span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span className="text-gray-400 text-sm">This week:</span>
+          <span className="text-white font-semibold text-sm">{weeklyDone} / {habit.weeklyGoal}</span>
+          {weeklyDone >= habit.weeklyGoal && <span className="text-sm">✅</span>}
         </div>
 
         <HabitHeatmap entries={habit.entries} />

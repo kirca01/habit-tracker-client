@@ -26,9 +26,9 @@ export default function DashboardPage() {
     fetchHabits();
   }, []);
 
-  const handleAdd = async (name: string, description: string, color: string) => {
+  const handleAdd = async (name: string, description: string, color: string, weeklyGoal: number) => {
     try {
-      await api.post('/habits', { name, description, color });
+      await api.post('/habits', { name, description, color, weeklyGoal });
       fetchHabits();
     } catch {
       console.error('Error adding habit');
@@ -62,9 +62,9 @@ export default function DashboardPage() {
     }
   };
   
-  const handleEdit = async (id: number, name: string, description: string, color: string) => {
+  const handleEdit = async (id: number, name: string, description: string, color: string, weeklyGoal: number) => {
     try {
-      await api.put(`/habits/${id}`, { name, description, color });
+      await api.put(`/habits/${id}`, { name, description, color, weeklyGoal });
       fetchHabits();
     } catch {
       console.error('Error editing habit');

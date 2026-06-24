@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 interface Props {
-  onAdd: (name: string, description: string, color: string) => void;
+  onAdd: (name: string, description: string, color: string, weeklyGoal: number) => void;
   onClose: () => void;
 }
 
@@ -11,10 +11,11 @@ export default function AddHabitModal({ onAdd, onClose }: Props) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [color, setColor] = useState('#6366f1');
+  const [weeklyGoal, setWeeklyGoal] = useState(7);
 
   const handleSubmit = () => {
     if (!name.trim()) return;
-    onAdd(name, description, color);
+    onAdd(name, description, color, weeklyGoal);
     onClose();
   };
 
@@ -43,6 +44,18 @@ export default function AddHabitModal({ onAdd, onClose }: Props) {
               onChange={(e) => setDescription(e.target.value)}
               className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="e.g. 30 min cardio"
+            />
+          </div>
+
+          <div>
+            <label className="text-gray-300 text-sm mb-1 block">Weekly goal: {weeklyGoal} days</label>
+            <input
+              type="range"
+              min="1"
+              max="7"
+              value={weeklyGoal}
+              onChange={(e) => setWeeklyGoal(Number(e.target.value))}
+              className="w-full accent-indigo-500"
             />
           </div>
 

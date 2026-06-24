@@ -3,7 +3,7 @@ import type { Habit } from '../types'
 
 interface Props {
     habit: Habit;
-    onEdit: (id: number, name: string, description: string, color: string) => void;
+    onEdit: (id: number, name: string, description: string, color: string, weeklyGoal: number) => void;
     onClose: () => void;
 }
 
@@ -13,10 +13,11 @@ export default function EditHabitModal({ habit, onEdit, onClose}: Props) {
     const [name, setName] = useState(habit.name);
     const [description, setDescription] = useState(habit.description ?? '');
     const [color, setColor] = useState(habit.color);
+    const [weeklyGoal, setWeeklyGoal] = useState(habit.weeklyGoal);
 
     const handleSubmit = () => {
         if (!name.trim()) return;
-        onEdit(habit.id, name, description, color);
+        onEdit(habit.id, name, description, color, weeklyGoal);
         onClose();
     };
 
@@ -43,6 +44,18 @@ export default function EditHabitModal({ habit, onEdit, onClose}: Props) {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                    />
+                </div>
+
+                <div>
+                    <label className="text-gray-300 text-sm mb-1 block">Weekly goal: {weeklyGoal} days</label>
+                    <input
+                        type="range"
+                        min="1"
+                        max="7"
+                        value={weeklyGoal}
+                        onChange={(e) => setWeeklyGoal(Number(e.target.value))}
+                        className="w-full accent-indigo-500"
                     />
                 </div>
 

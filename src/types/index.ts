@@ -10,6 +10,7 @@ export type Habit = {
   name: string;
   description?: string;
   color: string;
+  weeklyGoal: number;
   createdAt: string;
   isArchived: boolean;
   userId: number;
