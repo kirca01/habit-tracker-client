@@ -1,4 +1,5 @@
 import type { Habit } from '../types';
+import HabitHeatmap from './HabitHeatmap';
 
 interface Props {
   habit: Habit;
@@ -52,6 +53,8 @@ export default function HabitCard({ habit, onCheckIn, onUndoCheckIn, onDelete }:
         <span className="text-white font-bold text-xl">{streak}</span>
         <span className="text-gray-400 text-sm">dan streak</span>
       </div>
+
+      <HabitHeatmap entries={habit.entries} />
 
       <button
         onClick={() => isCompletedToday ? onUndoCheckIn(habit.id) : onCheckIn(habit.id)}
